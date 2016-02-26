@@ -1,0 +1,41 @@
+<div class="jumbotron">
+    <h1>Fund List</h1>
+    <p>
+        <div class="btn-group dropdown-group">
+            <label ng-if="!vm.data.fund">Funds</label>
+            <div data-toggle="dropdown" class="btn btn-default dropdown-toggle group-header">
+                <i class="icon-print"></i>
+                <span>Funds</span>
+                <span class="caret"></span>
+            </div>
+            <ul class="dropdown-menu items-menu" id="typeList">
+                <li class="item" ng-repeat="(id, fund) in funds" ng-click="filterShare(fund)">
+                    <input type="radio" id="fund_{{id}}" name="fund" ng-value="fund.name" ng-model="vm.data.fund" required>
+                    <label for="fund_{{id}}">{{fund.name}}</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="btn-group dropdown-group">
+            <span ng-if="!vm.data.fund">Shares</span>
+            <div data-toggle="dropdown" class="btn btn-default dropdown-toggle group-header">
+                <i class="icon-print"></i>
+                <span>Shares</span>
+                <span class="caret"></span>
+            </div>
+            <ul class="dropdown-menu items-menu" id="typeList">
+                <li class="item" ng-repeat="(id, share) in shares" ng-click="showGraphs(share)">
+                    <input type="radio" id="share_{{id}}" name="share" ng-value="share['Short Name']" ng-model="vm.data.share" required>
+                    <label for="share_{{id}}">{{share['Short Name']}}</label>
+                </li>
+            </ul>
+            <span class="help-block ng-hide">Please select a type of funds</span>
+        </div>
+    
+        <div id="graph_container"></div>
+
+
+    </p>
+
+    <!--    <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>-->
+</div>
